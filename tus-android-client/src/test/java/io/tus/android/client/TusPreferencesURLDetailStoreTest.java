@@ -11,17 +11,19 @@ import java.net.URL;
 
 import static org.junit.Assert.assertEquals;
 
+import io.tus.java.client.URLDetail;
+
 @RunWith(RobolectricTestRunner.class)
-public class TusPreferencesURLStoreTest {
+public class TusPreferencesURLDetailStoreTest {
 
     @Test
     public void shouldSetGetAndDeleteURLs() throws Exception {
         Activity activity = Robolectric.setupActivity(Activity.class);
-        TusPreferencesURLStore store = new TusPreferencesURLStore(activity.getSharedPreferences("tus-test", 0));
+        TusPreferencesURLDetailStore store = new TusPreferencesURLDetailStore(activity.getSharedPreferences("tus-test", 0));
         System.out.println("hello");
         URL url = new URL("https://tusd.tusdemo.net/files/hello");
         String fingerprint = "foo";
-        store.set(fingerprint, url);
+        store.set(fingerprint, new URLDetail(url));
 
         assertEquals(store.get(fingerprint), url);
 

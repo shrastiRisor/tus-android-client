@@ -12,7 +12,7 @@
 
 ```java
 // This example consumes the tus-java-client and tus-android-client libraries
-import io.tus.android.client.TusPreferencesURLStore;
+import io.tus.android.client.TusPreferencesURLDetailStore;
 import io.tus.java.client.TusClient;
 import io.tus.java.client.TusUpload;
 import io.tus.java.client.TusUploader;

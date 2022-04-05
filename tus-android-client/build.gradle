@@ -25,7 +25,7 @@ version=config.version
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'io.tus.java.client:tus-java-client:0.4.5'
+    implementation 'com.github.shrastiRisor:tus-java-client:v0.4.7'
     testImplementation 'org.robolectric:robolectric:4.5.1'
     testImplementation 'junit:junit:4.13.2'
 }
@@ -80,7 +80,7 @@ publishing {
         androidRelease(MavenPublication) {
             afterEvaluate {
                 from components.release
-                groupId 'io.tus.android.client'
+                groupId 'com.github.shrastiRisor'
                 artifactId 'tus-android-client'
                 description project.getDescription()
                 version project.getVersion()
@@ -96,12 +96,4 @@ publishing {
             }
         }
     }
-}
-
-signing {
-    def signingKeyId = System.getenv('SIGNING_KEY_ID')
-    def signingPassword = System.getenv('SIGNING_KEY_PASSWORD')
-    def signingKey = System.getenv('SIGNING_KEY_AMORED')
-    useInMemoryPgpKeys(signingKeyId, signingKey, signingPassword)
-    sign publishing.publications.androidRelease
 }

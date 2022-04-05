@@ -10,8 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.widget.ContentLoadingProgressBar;
 
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -21,7 +19,7 @@ import com.google.android.material.button.MaterialButton;
 import java.net.URL;
 
 import io.tus.android.client.TusAndroidUpload;
-import io.tus.android.client.TusPreferencesURLStore;
+import io.tus.android.client.TusPreferencesURLDetailStore;
 import io.tus.java.client.TusClient;
 import io.tus.java.client.TusUpload;
 import io.tus.java.client.TusUploader;
@@ -46,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             SharedPreferences pref = getSharedPreferences("tus", 0);
             client = new TusClient();
             client.setUploadCreationURL(new URL("https://tusd.tusdemo.net/files/"));
-            client.enableResuming(new TusPreferencesURLStore(pref));
+            client.enableResuming(new TusPreferencesURLDetailStore(pref));
         } catch (Exception e) {
             showError(e);
         }
